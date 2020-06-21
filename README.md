@@ -6,7 +6,7 @@ This password generator provides a randomized password based on user criteria, i
 
 ## Web URL
 
-https://smardones.github.io/PWGenerator/
+
 
 ## Contributor(s)
 
