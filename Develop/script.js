@@ -16,10 +16,10 @@ function writePassword() {
 
 }
 
-function passwordLength () {
+function passwordLength() {
   var pwCharLength = window.prompt("Please select how many characters you would like your password to be with a minimum of 8 and a maximum of 128.");
   console.log(pwCharLength);
-  var lengthInput = parseInt(pwCharLength);
+  lengthInput = parseInt(pwCharLength);
   
     if (lengthInput >= 8 && lengthInput <= 128) {
       window.alert("Thank you! You have chosen " + lengthInput + " characters.");
@@ -27,56 +27,53 @@ function passwordLength () {
       window.alert("Please select a number between 8 and 128.")
       passwordLength();
   }
-  return lengthInput;
+  
  }
 
  function randomizer(arr) {
     var arrayIndex = Math.floor(Math.random() * arr.length);
-    var selectedCharacter = arr[arrayIndex];
+    selectedCharacter = arr[arrayIndex];
     console.log(selectedCharacter);
     return selectedCharacter;
  }
 
 
-function generatePassword() {
-  
-  var pwCharLength = window.prompt("Please select how many characters you would like your password to be with a minimum of 8 and a maximum of 128.");
-  console.log(pwCharLength);
-  var lengthInput = parseInt(pwCharLength);
-  
-    if (lengthInput >= 8 && lengthInput <= 128) {
-      window.alert("Thank you! You have chosen " + lengthInput + " characters.");
-  } else {
-      window.alert("Please select a number between 8 and 128.")
-      passwordLength();
-  }
+function generatePassword(upper, lower, numeric, special) {
 
-  for (i = 1; i <= lengthInput; i++) {
-  var upperConfirm = window.confirm("Would you like to include upper case letters?");
-  if (upperConfirm) {
-  randomizer(upperChar);
+var pwd = "";
+
+var choices = [{upper}, {lower}, {numeric}, {special}];
+console.log([choices]);
+
+  if (upper) {
+  pwd += randomizer(upperChar);
   }
     
-  var lowerConfirm = window.confirm("Would you like to include lower case letters?");
-  if (lowerConfirm) {
-  randomizer(lowerChar);
+  if (lower) {
+  pwd += randomizer(lowerChar);
   }
 
-  var numericConfirm = window.confirm("Would you like to include numbers?");
-  if (numericConfirm) {
-  randomizer(numericChar);
+  if (numeric) {
+  pwd += randomizer(numericChar);
   }
 
-  var specialConfirm = window.confirm("Would you like to include special characters?");
-  if (specialConfirm) {
-  randomizer(specialChar);
+  if (special) {
+  pwd += randomizer(specialChar);
   }
-}
+  for (i = 0; i <= lengthInput; i++);
 
+  console.log(pwd);
 
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-generatePassword();
+passwordLength();
+
+var upperConfirm = window.confirm("Would you like to include upper case letters?");
+var lowerConfirm = window.confirm("Would you like to include lower case letters?");
+var numericConfirm = window.confirm("Would you like to include numbers?");
+var specialConfirm = window.confirm("Would you like to include special characters?");
+
+
+generatePassword(upperConfirm, lowerConfirm, numericConfirm, specialConfirm);
